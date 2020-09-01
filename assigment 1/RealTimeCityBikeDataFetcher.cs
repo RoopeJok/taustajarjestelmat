@@ -7,7 +7,7 @@ namespace assigment_1
     {
         HttpClient client = new HttpClient();
         
-        async Task<int>  GetBikeCountInStation(string stationName)
+        public async Task<int>  GetBikeCountInStation(string stationName)
         {
             try	
             {
@@ -30,6 +30,10 @@ namespace assigment_1
                 Console.WriteLine("\nException Caught!");	
                 Console.WriteLine("Message :{0} ",e.Message);
                 return 0;
+            }
+            catch(DllNotFoundException d)
+            {
+                throw new DllNotFoundException("Not Found: " +d);
             }
            
             
