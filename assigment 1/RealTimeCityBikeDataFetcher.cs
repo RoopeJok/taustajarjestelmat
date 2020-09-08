@@ -33,6 +33,8 @@ namespace assigment_1
                         return bikeCount;
                     }
                 }
+                NotFoundException exception = new NotFoundException("Station not found");
+                throw exception;
 
             }
             catch (ArgumentNullException ex)

@@ -46,15 +46,17 @@ namespace assigment_1
                         return 1;
                     }
                 }
+                NotFoundException exception = new NotFoundException("Station not found");
+                throw exception;
             }
             catch (ArgumentNullException ex)
             {
-                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Exception Caught!");
                 Console.WriteLine("Message :", ex.Message);
             }
             catch (NotFoundException ex)
             {
-                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Exception Caught!");
                 Console.WriteLine("Message :", ex.Message);
             }
             return 1;
