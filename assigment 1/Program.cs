@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace assigment_1
 {
@@ -7,16 +8,25 @@ namespace assigment_1
     {
         static async Task Main(string[] args)
         {
-            if(args.Length ==7)
+            if (args[0] == "realtime")
             {
-                OfflineCityBikeDataFetcher.GetBikeCountInStation("Luhtimäki");
+                RealTimeCityBikeDataFetcher realTimeCityBike = new RealTimeCityBikeDataFetcher();
+                Task<int> amountofbikes = realTimeCityBike.GetBikeCountInStation(args[1]);
+                int result = await amountofbikes;
+                Console.WriteLine(result);
             }
-            if(args.Length ==8)
+            else if (args[0] == "offline")
             {
-                RealTimeCityBikeDataFetcher.GetBikeCountInStation("Luhtimäki");
+                OfflineCityBikeDataFetch offlineCityBike = new OfflineCityBikeDataFetch();
+                Task<int> amountofbikes = offlineCityBike.GetBikeCountInStation(args[1]);
+                int result = await amountofbikes;
+                Console.WriteLine(result);
             }
-            Console.WriteLine(args[0]);
-            //return Task<int>  GetBikeCountInStation("Luhtimäki");
+            else
+            {
+                Console.WriteLine("Write either realtime or offline");
+            }
         }
     }
+
 }

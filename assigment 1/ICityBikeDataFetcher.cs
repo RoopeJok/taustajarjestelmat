@@ -1,5 +1,8 @@
 using System.Threading.Tasks;
-public interface ICityBikeDataFetcher
+namespace assigment_1
 {
-   public Task<int> GetBikeCountInStation(string stationName);
+    public interface ICityBikeDataFetcher
+    {
+        public Task<int> GetBikeCountInStation(string stationName);
+    }
 }

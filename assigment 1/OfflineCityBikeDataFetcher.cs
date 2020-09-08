@@ -1,27 +1,73 @@
 using System;
-using System.IO;
 using System.Threading.Tasks;
+using System.Linq;
 namespace assigment_1
 {
-    public class OfflineCityBikeDataFetcher:ICityBikeDataFetcher
+    public class OfflineCityBikeDataFetch : ICityBikeDataFetcher
     {
-        public Task<int> GetBikeCountInStation(string stationName)
+        public void Sorting()
         {
+            Console.WriteLine("Readin the file");
+        }
+        public async Task<int> GetBikeCountInStation(string stationName)
+        {
+            string[] file = System.IO.File.ReadAllLines(@"C:\Users\roope\Documents\GitHub\taustajarjestelmat\assigment 1\bikedata.txt");
+            string[] completeListofNames = new string[file.Length];
+            string[] completeListofAmounts = new string[file.Length];
+            string insert;
+            string insertOfInsert;
             try
             {
-                string responseBody;
-               using( var sr = new StreamReader("bikedata.txt"))
+                foreach (char letter in stationName)
                 {
-                    responseBody = sr.ReadToEnd();                   
+                    if (char.IsDigit(letter))
+                    {
+                        System.ArgumentException argumentException = new System.ArgumentException("Station name can not contain numbers");
+                        throw argumentException;
+                    }
                 }
-                int result = Int32.Parse(responseBody);
-                return result; 
+                var task = new Task(() => Sorting());
+                task.Start();
+                await task;
+                for (int i = 0; i < file.Length; i++)
+                {
+                    string rivi = file[i];
+                    insert = new string(rivi.Where(char.IsLetter).ToArray());
+                    completeListofNames[i] = insert;
+                    insertOfInsert = new string(rivi.Where(char.IsDigit).ToArray());
+                    completeListofAmounts[i] = insertOfInsert;
+                }
+                OfflineStation station = new OfflineStation(completeListofNames, completeListofAmounts);
+                for (int i = 0; i < station.name.Length; i++)
+                {
+                    if (station.name[i] == stationName)
+                    {
+                        Console.WriteLine(station.bikesAvailable[i] + "\n" + station.name[i]);
+                        return 1;
+                    }
+                }
             }
-            catch (IOException e)
+            catch (ArgumentNullException ex)
             {
-                Console.WriteLine("The file could not be read: "+e.Message);
-                return 0;
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :", ex.Message);
             }
+            catch (NotFoundException ex)
+            {
+                Console.WriteLine("\nException Caught!");
+                Console.WriteLine("Message :", ex.Message);
+            }
+            return 1;
         }
+    }
+    public class OfflineStation
+    {
+        public OfflineStation(string[] lines, string[] bikes)
+        {
+            name = lines;
+            bikesAvailable = bikes;
+        }
+        public string[] name { get; set; }
+        public string[] bikesAvailable { get; set; }
     }
 }
