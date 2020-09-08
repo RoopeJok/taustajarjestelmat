@@ -30,7 +30,7 @@ namespace assigment_1
                     {
                         bikeCount = bike.stations[i].bikesAvailable;
                         Console.WriteLine(bikeCount + "\n" + stationName);
-                        return 1;
+                        return bikeCount;
                     }
                 }
 
