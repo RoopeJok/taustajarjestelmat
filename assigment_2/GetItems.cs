@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 public class GetItems
 {
-    public Array getItems(Player player)
+    public Item[] getItems(Player player)
     {
-        Array array = player.Items.ToArray();
-        return array;
+        Item[] itemArray = new Item[player.Items.Count];
+        for (int i = 0; i < player.Items.Count; i++)
+        {
+            itemArray[i] = player.Items[i];
+        }
+        return itemArray;
     }
-    public Array getItemsWithLinq(Player player)
+    public Item[] getItemsWithLinq(Player player)
     {
 
         return player.Items.ToArray();
