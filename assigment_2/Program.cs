@@ -22,7 +22,7 @@ namespace assigment_2
         {
 
             Item item;
-            var player = new Player[10];
+            var player = new Player[1000000];
             List<Player> players = new List<Player>();
             List<PlayerForAnotherGame> playersForAnotherGames = new List<PlayerForAnotherGame>();
             var guids = new HashSet<Guid>();

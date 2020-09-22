@@ -57,11 +57,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\taustajarjestelmat.csproj",
-      "projectName": "taustajarjestelmat",
-      "projectPath": "c:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\taustajarjestelmat.csproj",
+      "projectUniqueName": "c:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\GameWebApi\\GameWebApi.csproj",
+      "projectName": "GameWebApi",
+      "projectPath": "c:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\GameWebApi\\GameWebApi.csproj",
       "packagesPath": "C:\\Users\\roope\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\obj\\",
+      "outputPath": "c:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\GameWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\roope\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -102,6 +102,9 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

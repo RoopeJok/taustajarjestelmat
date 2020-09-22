@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5gCacg+Rw72Rp/7fEQJC0c3saDjDY2IrvDW1E+Z5huTEVlyVaxxNjPCqGtv4jcj501P/AaEr0Mm8KtIcxSMpmg==",
+  "dgSpecHash": "et9Ug3RwA9jPhDy61wRneoQVUlYgC+I6RMdz7LMO6FzPvSEVLqCvhgbGdDZ6ynHtssFRS2/U/B3YqZKBmjTUmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\assigment 1\\assigment 1.csproj",
+  "projectFilePath": "c:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\assigment 1\\assigment 1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\roope\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],

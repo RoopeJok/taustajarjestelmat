@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "cub4ixAWlSvug5JcIidRBZxIvgdNtRB0SVsAqWqk+BsfiK70rut6xuFeqoXbVYyVWztaVghp36DrR/u3dmUJbg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\roope\\Documents\\GitHub\\taustajarjestelmat\\GameWebApi\\GameWebApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\roope\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
