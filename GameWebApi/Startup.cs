@@ -26,7 +26,7 @@ namespace GameWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<FileRepository, IRepository>();
+            services.AddSingleton<IRepository, MongoDbRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +36,7 @@ namespace GameWebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseRouting();
 

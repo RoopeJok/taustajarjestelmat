@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace GameWebApi
 {
     [ApiController]
-    [Route("api/players/")]
+    [Route("api/players/{playerId}/items")]
     public class ItemsController : ControllerBase
     {
         private readonly ILogger<ItemsController> _logger;

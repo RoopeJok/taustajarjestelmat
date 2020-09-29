@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace GameWebApi
 {
     [ApiController]
-    [Route("api/players")]
+    [Route("api/player")]
     public class PlayersController : ControllerBase
     {
         private readonly ILogger<PlayersController> _logger;
@@ -18,10 +18,7 @@ namespace GameWebApi
         }
         [HttpGet]
         [Route("{Get}")]
-        public Task<Player> Get(Guid id)
-        {
-            return _repository.Get(id);
-        }
+        public Task<Player> Get(Guid id) => _repository.Get(id);
         [HttpGet]
         [Route("{GetAll}")]
         public Task<Player[]> GetAll()
@@ -32,7 +29,7 @@ namespace GameWebApi
         [Route("{Create}")]
         public Task<Player> Create(NewPlayer player)
         {
-            Player createPlayer = new Player() { Id = Guid.NewGuid(), Name = player.Name }
+            Player createPlayer = new Player() { Id = Guid.NewGuid(), Name = player.Name };
             return _repository.Create(createPlayer);
         }
         [HttpPost]

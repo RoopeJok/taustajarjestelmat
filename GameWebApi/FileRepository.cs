@@ -65,7 +65,9 @@ namespace GameWebApi
 
                 Id = item.Id,
                 Name = item.Name,
-                level = item.level
+                level = item.level,
+                type = item.type,
+                creationtime = item.creationtime
             };
             items = itemlist.ItemList;
             items[itemlist.ItemList.Length] = createdItem;
@@ -222,20 +224,20 @@ namespace GameWebApi
             }
         }
 
-        public async Task<Item> UpdateItem(Guid playerId, Item item)
+        public async Task<Item> UpdateItem(Guid playerId, ModifiedItem item)
         {
-
-            string itemjson = JsonConvert.DeserializeObject(item.Id.ToString()) + Environment.NewLine;
+            Item item1 = new Item();
+            string itemjson = JsonConvert.DeserializeObject(item1.Id.ToString()) + Environment.NewLine;
             try
             {
-                if (path.Contains(item.Id.ToString()) && path.Contains(playerId.ToString()))
+                if (path.Contains(item1.Id.ToString()) && path.Contains(playerId.ToString()))
                 {
                     await File.WriteAllTextAsync(path, itemjson, Encoding.UTF8);
-                    return item;
+                    return item1;
                 }
                 else
                 {
-                    return item;
+                    return item1;
                 }
             }
             catch (System.Exception e)

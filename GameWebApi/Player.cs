@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace GameWebApi
 {
     public class Player
@@ -9,5 +11,6 @@ namespace GameWebApi
         public int Level { get; set; }
         public bool IsBanned { get; set; }
         public DateTime CreationTime { get; set; }
+        public List<Item> itemlist { get; set; }
     }
 }
