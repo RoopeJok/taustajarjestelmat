@@ -121,5 +121,30 @@ namespace GameWebApi
             }
             return null;
         }
+        public async Task<Player[]> GetPlayerScore(int minscore)
+        {
+            FilterDefinition<Player> filter = Builders<Player>.Filter.Gte(p => p.Score, minscore);
+            List<Player> players = await _playerCollection.Find(filter).ToListAsync();
+            return players.ToArray();
+        }
+        public async Task<Player> GetPlayerName(string name)
+        {
+            FilterDefinition<Player> filter = Builders<Player>.Filter.Eq(p => p.Name, name);
+            return await _playerCollection.Find(filter).FirstAsync();
+        }
+        public async Task<Player[]> GetPlayerItem()
+        {
+            var filter = Builders<Player>.Filter.ElemMatch<Item>(p => p.itemlist, Builders<Item>.Filter.Eq(i => i.type, ItemType.Sword));
+            List<Player> players = await _playerCollection.Find(filter).ToListAsync();
+            return players.ToArray();
+        }
+        public async Task<Player> UpdatePlayername(string name, string name1)
+        {
+            var filter = Builders<Player>.Filter.Eq(p => p.Name, name);
+            var update = Builders<Player>.Update.Set(p => p.Name, name1);
+            await _playerCollection.UpdateOneAsync(filter, update);
+            return null;
+        }
+
     }
 }

@@ -18,12 +18,24 @@ namespace GameWebApi
         }
         [HttpGet]
         [Route("{Get}")]
-        public Task<Player> Get(Guid id) => _repository.Get(id);
+        public Task<Player> Get(Guid id)
+        {
+            return _repository.Get(id);
+        }
+
         [HttpGet]
         [Route("{GetAll}")]
-        public Task<Player[]> GetAll()
+        public Task<Player[]> GetAll([FromQuery] int? minscore)
         {
-            return _repository.GetAll();
+            if (minscore.HasValue)
+            {
+                return GetPlayerScore(minscore.Value);
+            }
+            else
+            {
+                return _repository.GetAll();
+            }
+
         }
         [HttpPost]
         [Route("{Create}")]
@@ -44,5 +56,28 @@ namespace GameWebApi
         {
             return _repository.Delete(id);
         }
+        public Task<Player[]> GetPlayerScore([FromQuery] int minscore)
+        {
+            return _repository.GetPlayerScore(minscore);
+        }
+        [HttpGet]
+        [Route("{Name}")]
+        public Task<Player> GetPlayerName(string name)
+        {
+            return _repository.GetPlayerName(name);
+        }
+        [HttpGet]
+        [Route("{Item}")]
+        public Task<Player[]> GetPlayerItem()
+        {
+            return _repository.GetPlayerItem();
+        }
+        [HttpGet]
+        [Route("{Update}")]
+        public Task<Player> UpdatePlayername(string name, string name1)
+        {
+            return _repository.UpdatePlayername(name, name1);
+        }
+
     }
 }

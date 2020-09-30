@@ -200,6 +200,21 @@ namespace GameWebApi
             }
         }
 
+        public Task<Player[]> GetPlayerItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Player> GetPlayerName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Player[]> GetPlayerScore(int minscore)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Player> Modify(Guid id, ModifiedPlayer player)
         {
             Player player1 = new Player();
@@ -245,6 +260,11 @@ namespace GameWebApi
                 Console.WriteLine(e.Message);
                 throw;
             }
+        }
+
+        public Task<Player> UpdatePlayername(string name, string name1)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -14,5 +14,9 @@ namespace GameWebApi
         Task<Item[]> GetAllItems(Guid playerId);
         Task<Item> UpdateItem(Guid playerId, ModifiedItem item);
         Task<Item> DeleteItem(Guid playerId, Item item);
+        Task<Player[]> GetPlayerScore(int minscore);
+        Task<Player> GetPlayerName(string name);
+        Task<Player[]> GetPlayerItem();
+        Task<Player> UpdatePlayername(Player player, ModifiedPlayer player1);
     }
 }
