@@ -19,7 +19,7 @@ namespace GameWebApi
             }
             catch (NotFoundException e)
             {
-                Console.Writeline("Invalid Argument: " + e.Message);
+                Console.WriteLine("Invalid Argument: " + e.Message);
                 context.Response.StatusCode = 404;
             }
         }

@@ -17,6 +17,6 @@ namespace GameWebApi
         Task<Player[]> GetPlayerScore(int minscore);
         Task<Player> GetPlayerName(string name);
         Task<Player[]> GetPlayerItem();
-        Task<Player> UpdatePlayername(Player player, ModifiedPlayer player1);
+        Task<Player> UpdatePlayername(string name, string name1);
     }
 }
