@@ -4,7 +4,7 @@ using MongoDB.Bson;
 using System.Linq;
 using System.Collections.Generic;
 using MongoDB.Driver;
-using Newtonsoft.Json;
+
 namespace GameWebApi
 {
     public class MongoDbRepository : IRepository
