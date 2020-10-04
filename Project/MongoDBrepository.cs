@@ -12,8 +12,8 @@ namespace Project
         {
             var mongoClient = new MongoClient("mongodb://localhost:27017");
             var database = mongoClient.GetDatabase("Game");
-            _playerCollection = database.GetCollection<Player>("players");
-            _bsonDocumentCollection = database.GetCollection<BsonDocument>("players");
+            _playerCollection = database.GetCollection<Player>("Game");
+            _bsonDocumentCollection = database.GetCollection<BsonDocument>("Game");
         }
 
         public async Task<Player> Ban(string id, bool banned)
