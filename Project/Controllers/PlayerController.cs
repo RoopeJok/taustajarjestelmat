@@ -17,21 +17,21 @@ namespace Project.Controllers
             _repository = repository;
         }
         [HttpGet]
-        [Route("{Get}")]
-        public Task<Player> Get(Guid id)
+        [Route("Get")]
+        public async Task<Player> Get([FromBody] Player player)
         {
-            return _repository.Get(id.ToString());
+            return await _repository.Get(player);
         }
 
         [HttpGet]
-        [Route("{GetAll}")]
-        public Task<Player[]> GetAll()
+        [Route("GetAll")]
+        public async Task<Player[]> GetAll()
         {
-            return _repository.GetAll();
+            return await _repository.GetAll();
         }
         [HttpPost]
-        [Route("{Create}")]
-        public Task<Player> Create(NewPlayer player)
+        [Route("Create")]
+        public async Task<Player> Create([FromBody] NewPlayer player)
         {
             Player createPlayer = new Player()
             {
@@ -42,62 +42,62 @@ namespace Project.Controllers
                 CreationTime = DateTime.UtcNow,
                 Level = 0
             };
-            return _repository.Create(createPlayer);
+            return await _repository.Create(createPlayer);
         }
         [HttpPost]
-        [Route("{Modify}")]
-        public Task<Player> Modify(Guid id, Player player)
+        [Route("modify")]
+        public async Task<Player> Modify([FromBody] Player player)
         {
-            return _repository.Modify(id.ToString(), player);
+            return await _repository.Modify(player);
         }
         [HttpPost]
-        [Route("{Delete}")]
-        public Task<Player> Delete(Guid id)
+        [Route("Delete")]
+        public async Task<Player> Delete([FromBody] Player player)
         {
-            return _repository.Delete(id.ToString());
+            return await _repository.Delete(player);
         }
         [HttpGet]
-        [Route("{GetAllScores}")]
+        [Route("GetAllScores")]
 
-        public Task<Player[]> GetAllPlayerScore()
+        public async Task<Player[]> GetAllPlayerScore()
         {
-            return _repository.GetAllPlayerScore();
+            return await _repository.GetAllPlayerScore();
         }
         [HttpGet]
-        [Route("{Score}")]
-        public Task<Player> GetPlayerScore(int score)
+        [Route("getplayerscore")]
+        public async Task<Player> GetPlayerScore([FromBody] Player player)
         {
-            return _repository.GetPlayerScore(score);
+            return await _repository.GetPlayerScore(player);
         }
         [HttpGet]
-        [Route("{Name}")]
-        public Task<Player> GetPlayerName(string name)
+        [Route("getplayername")]
+        public async Task<Player> GetPlayerName([FromBody] Player player)
         {
-            return _repository.GetPlayerName(name);
-        }
-        [HttpGet]
-        [Route("{Update}")]
-        public Task<Player> UpdatePlayername(string name, string name1)
-        {
-            return _repository.UpdatePlayername(name, name1);
+            return await _repository.GetPlayerName(player);
         }
         [HttpPost]
-        [Route("{Ban}")]
-        public Task<Player> Ban(Guid id, bool banned)
+        [Route("Update")]
+        public async Task<Player> UpdatePlayername([FromBody] Player player, string name1)
         {
-            return _repository.Ban(id.ToString(), banned);
+            return await _repository.UpdatePlayername(player, name1);
+        }
+        [HttpPost]
+        [Route("ban")]
+        public async Task<Player> Ban([FromBody] Player player)
+        {
+            return await _repository.Ban(player);
         }
         [HttpGet]
-        [Route("{GetBanned}")]
-        public Task<Player[]> GetBannedPlayers()
+        [Route("GetBanned")]
+        public async Task<Player[]> GetBannedPlayers(Player player)
         {
-            return _repository.GetBannedPlayers();
+            return await _repository.GetBannedPlayers(player);
         }
         [HttpGet]
-        [Route("{GetNotBanned}")]
-        public Task<Player[]> GetNotBannedPlayers()
+        [Route("GetNotBanned")]
+        public async Task<Player[]> GetNotBannedPlayers(Player player)
         {
-            return _repository.GetNotBannedPlayers();
+            return await _repository.GetNotBannedPlayers(player);
         }
 
     }
