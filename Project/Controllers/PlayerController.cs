@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-namespace Project
+namespace Project.Controllers
 {
     [ApiController]
     [Route("api/player")]
