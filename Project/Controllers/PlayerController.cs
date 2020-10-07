@@ -17,10 +17,10 @@ namespace Project.Controllers
             _repository = repository;
         }
         [HttpGet]
-        [Route("Get")]
-        public async Task<Player> Get([FromBody] Player player)
+        [Route("Get/{id:Guid}")]
+        public async Task<Player> Get(Guid id)
         {
-            return await _repository.Get(player);
+            return await _repository.Get(id.ToString());
         }
 
         [HttpGet]
@@ -51,10 +51,10 @@ namespace Project.Controllers
             return await _repository.Modify(player);
         }
         [HttpPost]
-        [Route("Delete")]
-        public async Task<Player> Delete([FromBody] Player player)
+        [Route("Delete/{id:Guid}")]
+        public async Task<Player> Delete(Guid id)
         {
-            return await _repository.Delete(player);
+            return await _repository.Delete(id.ToString());
         }
         [HttpGet]
         [Route("GetAllScores")]
@@ -64,34 +64,34 @@ namespace Project.Controllers
             return await _repository.GetAllPlayerScore();
         }
         [HttpGet]
-        [Route("getplayerscore")]
-        public async Task<Player> GetPlayerScore([FromBody] Player player)
+        [Route("getplayerscore/{score:int}")]
+        public async Task<Player> GetPlayerScore(int score)
         {
-            return await _repository.GetPlayerScore(player);
+            return await _repository.GetPlayerScore(score);
         }
         [HttpGet]
-        [Route("getplayername")]
-        public async Task<Player> GetPlayerName([FromBody] Player player)
+        [Route("getplayername/{name}")]
+        public async Task<Player> GetPlayerName(string name)
         {
-            return await _repository.GetPlayerName(player);
+            return await _repository.GetPlayerName(name);
         }
         [HttpPost]
-        [Route("Update")]
-        public async Task<Player> UpdatePlayername([FromBody] Player player, string name1)
+        [Route("Update/{name,name1}")]
+        public async Task<Player> UpdatePlayername(string name, string name1)
         {
-            return await _repository.UpdatePlayername(player, name1);
+            return await _repository.UpdatePlayername(name, name1);
         }
         [HttpPost]
-        [Route("ban")]
-        public async Task<Player> Ban([FromBody] Player player)
+        [Route("ban/{id:Guid}")]
+        public async Task<Player> Ban(Guid id)
         {
-            return await _repository.Ban(player);
+            return await _repository.Ban(id.ToString());
         }
         [HttpPost]
-        [Route("unban")]
-        public async Task<Player> UnBan([FromBody] Player player)
+        [Route("unban/{id:Guid}")]
+        public async Task<Player> UnBan(Guid id)
         {
-            return await _repository.UnBan(player);
+            return await _repository.UnBan(id.ToString());
         }
         [HttpGet]
         [Route("GetBanned")]
