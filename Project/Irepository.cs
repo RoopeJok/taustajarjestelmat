@@ -7,7 +7,7 @@ namespace Project
         Task<Player> Get(string id);
         Task<Player[]> GetAll();
         Task<Player> Create(Player player);
-        Task<Player> Modify(Player player);
+        Task<Player> Modify(string id, Player player);
         Task<Player> Delete(string id);
         Task<Player[]> GetAllPlayerScore();
         Task<Player> GetPlayerName(string name);

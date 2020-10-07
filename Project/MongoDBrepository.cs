@@ -72,9 +72,9 @@ namespace Project
             return await _playerCollection.Find(filter).FirstAsync();
         }
 
-        public async Task<Player> Modify(Player player)
+        public async Task<Player> Modify(string id, Player player)
         {
-            var filter = Builders<Player>.Filter.Eq(p => p.Id, player.Id);
+            var filter = Builders<Player>.Filter.Eq(p => p.Id, id);
             await _playerCollection.ReplaceOneAsync(filter, player);
             return player;
         }
@@ -101,8 +101,6 @@ namespace Project
             await _playerCollection.UpdateOneAsync(filter, update);
             return null;
         }
-
-
     }
 
 }

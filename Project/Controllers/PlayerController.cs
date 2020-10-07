@@ -45,10 +45,10 @@ namespace Project.Controllers
             return await _repository.Create(createPlayer);
         }
         [HttpPost]
-        [Route("modify")]
-        public async Task<Player> Modify([FromBody] Player player)
+        [Route("modify/{id:Guid}")]
+        public async Task<Player> Modify(Guid id, [FromBody] Player player)
         {
-            return await _repository.Modify(player);
+            return await _repository.Modify(id.ToString(), player);
         }
         [HttpPost]
         [Route("Delete/{id:Guid}")]
