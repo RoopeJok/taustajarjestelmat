@@ -19,7 +19,7 @@ namespace Project
         public async Task<Player> Ban(Player player)
         {
             var filter = Builders<Player>.Filter.Eq(p => p.Id, player.Id);
-            var update = Builders<Player>.Update.Set(p => p.IsBanned, player.IsBanned);
+            var update = Builders<Player>.Update.Set(p => p.IsBanned, true);
             await _playerCollection.UpdateOneAsync(filter, update);
             return null;
         }
@@ -55,16 +55,16 @@ namespace Project
             return players.ToArray();
         }
 
-        public async Task<Player[]> GetBannedPlayers(Player player)
+        public async Task<Player[]> GetBannedPlayers()
         {
-            var filter = Builders<Player>.Filter.Eq(p => p.IsBanned, player.IsBanned);
+            var filter = Builders<Player>.Filter.Eq(p => p.IsBanned, true);
             var players = await _playerCollection.Find(filter).ToListAsync();
             return players.ToArray();
         }
 
-        public async Task<Player[]> GetNotBannedPlayers(Player player)
+        public async Task<Player[]> GetNotBannedPlayers()
         {
-            var filter = Builders<Player>.Filter.Ne(p => p.IsBanned, player.IsBanned);
+            var filter = Builders<Player>.Filter.Eq(p => p.IsBanned, false);
             var players = await _playerCollection.Find(filter).ToListAsync();
             return players.ToArray();
         }
@@ -86,6 +86,14 @@ namespace Project
             var filter = Builders<Player>.Filter.Eq(p => p.Id, player.Id);
             await _playerCollection.ReplaceOneAsync(filter, player);
             return player;
+        }
+
+        public async Task<Player> UnBan(Player player)
+        {
+            var filter = Builders<Player>.Filter.Eq(p => p.Id, player.Id);
+            var update = Builders<Player>.Update.Set(p => p.IsBanned, false);
+            await _playerCollection.UpdateOneAsync(filter, update);
+            return null;
         }
 
         public async Task<Player> UpdatePlayername(Player player, string newname)

@@ -13,8 +13,9 @@ namespace Project
         Task<Player> GetPlayerName(Player player);
         Task<Player> UpdatePlayername(Player player, string newname);
         Task<Player> Ban(Player player);
+        Task<Player> UnBan(Player player);
         Task<Player> GetPlayerScore(Player player);
-        Task<Player[]> GetBannedPlayers(Player player);
-        Task<Player[]> GetNotBannedPlayers(Player player);
+        Task<Player[]> GetBannedPlayers();
+        Task<Player[]> GetNotBannedPlayers();
     }
 }

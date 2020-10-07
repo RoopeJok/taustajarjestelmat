@@ -87,17 +87,23 @@ namespace Project.Controllers
         {
             return await _repository.Ban(player);
         }
+        [HttpPost]
+        [Route("unban")]
+        public async Task<Player> UnBan([FromBody] Player player)
+        {
+            return await _repository.UnBan(player);
+        }
         [HttpGet]
         [Route("GetBanned")]
-        public async Task<Player[]> GetBannedPlayers(Player player)
+        public async Task<Player[]> GetBannedPlayers()
         {
-            return await _repository.GetBannedPlayers(player);
+            return await _repository.GetBannedPlayers();
         }
         [HttpGet]
         [Route("GetNotBanned")]
-        public async Task<Player[]> GetNotBannedPlayers(Player player)
+        public async Task<Player[]> GetNotBannedPlayers()
         {
-            return await _repository.GetNotBannedPlayers(player);
+            return await _repository.GetNotBannedPlayers();
         }
 
     }
